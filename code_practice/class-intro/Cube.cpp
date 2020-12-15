@@ -8,6 +8,6 @@ double Cube::getSurfaceArea() {
 	return 6 * length_ * length_;
 }
 
-void setLength(double length)  {
+void Cube::setLength(double length)  {
 	length_ = length;
 }
