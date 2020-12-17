@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Cube.h"
 
+using std::cout;
+using std::endl;
 
 int main() {
 
@@ -11,8 +13,8 @@ int main() {
 	double vol = c.getVolume();
 	double sArea = c.getSurfaceArea();
 
-	std::cout << "the volume is: " << vol << std::endl;
-	std::cout << "the surface area is: " << sArea << std::endl;
+	cout << "the volume is: " << vol << endl;
+	cout << "the surface area is: " << sArea << endl;
 
 	return 0;
 
