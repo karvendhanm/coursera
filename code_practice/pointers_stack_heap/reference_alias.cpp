@@ -45,6 +45,32 @@ int main() {
 	int* &t = p;
 	cout << "value of t is: " << t << endl;
 	cout << "t is referencing to: " << *t << endl;
+	
+	int* m = new int;
+	int* &k = m;
+
+	cout << "value of m is: " << m << endl;
+	cout << "value of k is: " << k << endl;
+
+	*k = 233;
+	cout << "value of *m is: " << *m << endl;
+	cout << "value of *k is: " << *k << endl;
+
+	p = k;
+	cout << "value of *p is: " << *p << endl;
+	cout << "value of *t is: " << *t << endl;
+
+	int l = 345;
+	int &s = l;	
+	cout << "the value of l is: " << l << " the value of s is: " << s << endl;
+	cout << "the address of l is: " << &l << " the address of s is: " << &s << endl;
+
+	int** var = &p;
+	cout << "the value in *var is: " << *var << endl;
+	cout << "the value in **var is: " << **var << endl;
+
+	int** &varalias = var;
+	cout << "the value in **varalias: " << **varalias << endl;
 
 	return 0;
 }
