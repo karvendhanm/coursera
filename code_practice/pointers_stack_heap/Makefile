@@ -1,5 +1,5 @@
 EXE = main
-OBJS = reference_alias.o 
+OBJS = functions_and_pointers.o
 CLEAN_RM =
 
 include ../../_make/generic.mk
