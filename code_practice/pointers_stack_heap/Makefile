@@ -1,5 +1,5 @@
 EXE = main
-OBJS = stack_memory_and_pointers.o
+OBJS = double_free_heap_memory.o
 CLEAN_RM =
 
 include ../../_make/generic.mk
