@@ -1,5 +1,5 @@
 EXE = main
-OBJS = alias_secrets.o
+OBJS = arrays_in_heap.o
 CLEAN_RM =
 
 include ../../_make/generic.mk
