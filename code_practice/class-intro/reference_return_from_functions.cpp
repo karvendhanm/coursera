@@ -15,6 +15,7 @@ int* foo1() {
 	return f;	
 }
 
+
 int main() {
 	int m = foo();
 	std::cout << "the value of m is: " << m << std::endl;	
@@ -24,5 +25,6 @@ int main() {
 	std::cout << "the value of *m1 inside main is: " << *m1 << std::endl;	
 	std::cout << "the address of &m1 inside main is: " << &m1 << std::endl;
 
+	
 	return 0;
 }
