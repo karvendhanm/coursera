@@ -3,6 +3,8 @@
 class Cube{
 	
 	public:
+		Cube();
+		Cube(double length);
 		double getVolume();
 		double getSurfaceArea();
 		void setLength(double length);
