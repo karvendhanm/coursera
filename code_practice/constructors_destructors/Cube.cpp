@@ -14,6 +14,11 @@ Cube::Cube(double length) {
 	length_ = length;
 }
 
+Cube::Cube(const Cube & obj) {
+	cout << "copy constructor inside Cube.cpp has been invoked" << endl;
+	length_ = obj.length_;
+}
+
 double Cube::getVolume() {
 	return length_ * length_ * length_;
 }
