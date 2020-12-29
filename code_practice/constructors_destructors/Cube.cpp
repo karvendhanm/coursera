@@ -19,6 +19,10 @@ Cube::Cube(const Cube & obj) {
 	length_ = obj.length_;
 }
 
+Cube & Cube::operator=(const Cube & obj) {
+	cout << "the copy assignment operator inside Cube.cpp has been invoked" << endl;
+}
+
 double Cube::getVolume() {
 	return length_ * length_ * length_;
 }

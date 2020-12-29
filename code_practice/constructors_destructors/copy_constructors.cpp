@@ -7,11 +7,11 @@ void foo(Cube c1) {
 }
 
 Cube foo1() {
-	Cube* c = new Cube(4);
-	std::cout << "the value of c is: " << c << std::endl;
-	std::cout << "The volume of cube is (i am in line 11): " << c->getVolume() << std::endl;
+	Cube c;
+	std::cout << "the value of c is: " << &c << std::endl;
+	std::cout << "The volume of cube is (i am in line 11): " << c.getVolume() << std::endl;
 	std::cout << "function foo1 has been called, soon a copy constructor will be called" << std::endl;	
-	return *c;	
+	return c;	
 }
 
 void foo2(Cube &c) {
@@ -23,10 +23,12 @@ int main() {
 	Cube cube(9);
 	std::cout << "The volume of the cube is: " << cube.getVolume() << std::endl;
 	std::cout << "The surface area of the cube is: " << cube.getSurfaceArea() << std::endl;
+	std::cout << "The address of the initial cube is: " << &cube << std::endl;
 	
 	Cube c1 = cube;
 	std::cout << "The volume of the cube is: " << c1.getVolume() << std::endl;
 	std::cout << "The surface area of the cube is: " << c1.getSurfaceArea() << std::endl;
+	std::cout << "The address of the copied cube c1 is: " << &c1 << std::endl;
 
 	std::cout <<"\n" << "FIRST FUNCTION CALL" << std::endl;
 	std::cout << "the address of cube just before calling foo: " << &cube << std::endl;
