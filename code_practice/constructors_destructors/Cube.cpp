@@ -21,6 +21,9 @@ Cube::Cube(const Cube & obj) {
 
 Cube & Cube::operator=(const Cube & obj) {
 	cout << "the copy assignment operator inside Cube.cpp has been invoked" << endl;
+	length_ = obj.length_;
+	cout << "this address: " << this << endl;
+	return *this;
 }
 
 double Cube::getVolume() {
