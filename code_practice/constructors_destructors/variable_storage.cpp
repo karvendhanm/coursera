@@ -1,17 +1,16 @@
 #include "Cube.h"
 #include <iostream>
 
-int & foo(int & s) {
+Cube foo(Cube s) {
+	std::cout << "I am just missing something" << std::endl;
 	std::cout << "the address of s is: " << &s << std::endl;
-	//s = s * 3;
-	return (s * 3);
+	return s;
 }
 
 int main() {
-	int a = 3;
-	std::cout << "the address of a is: " << &a << std::endl;
-	a = foo(a);
-	std::cout << "the address of a is: " << &a << std::endl;
-	std::cout << "the value of a is: " << a << std::endl;	
+	Cube c(5);
+	std::cout << "the address of c is: " << &c << std::endl;
+	c = foo(c);
+	std::cout << "the address of c is: " << &c << std::endl;
 	return 0;
 }
