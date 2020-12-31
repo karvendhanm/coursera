@@ -10,6 +10,7 @@ class Cube{
 		double getVolume() const;
 		double getSurfaceArea() const;
 		void setLength(double length);
+		~Cube();
 	private:	
 		double length_;
 };

@@ -7,24 +7,24 @@ using std::endl;
 Cube::Cube() {
 	cout << "default custom constructor inside Cube.cpp has been invoked" << endl;
 	length_ = 1;
-	cout << "Created $" << getVolume() << std::endl;
+	cout << "Created $" << this->getVolume() << std::endl;
 }
 
 Cube::Cube(double length) {
 	cout << "one parameter custom constructor inside Cube.cpp has been invoked" << endl;
 	length_ = length;
-	cout << "Created $" << getVolume() << std::endl;
+	cout << "Created $" << this->getVolume() << std::endl;
 }
 
 Cube::Cube(const Cube & obj) {
 	cout << "copy constructor inside Cube.cpp has been invoked" << endl;
 	length_ = obj.length_;
-	cout << "Created $" << getVolume() << " via copy" << std::endl;
+	cout << "Created $" << this->getVolume() << " via copy" << std::endl;
 } 
 
 Cube & Cube::operator=(const Cube & obj) {
 	cout << "the copy assignment operator inside Cube.cpp has been invoked" << endl;
-	cout << "transformed $" << getVolume() << " -> $" << obj.getVolume() << std::endl;
+	cout << "transformed $" << this->getVolume() << " -> $" << obj.getVolume() << std::endl;
 	length_ = obj.length_;
 	//cout << "this address: " << this << endl;
 	return *this;
@@ -41,4 +41,8 @@ double Cube::getSurfaceArea() const{
 
 void Cube::setLength(double length) {
 	length_ = length;
+}
+
+Cube::~Cube() {
+	cout << "Destroyed $" << this->getVolume() << endl;
 }
