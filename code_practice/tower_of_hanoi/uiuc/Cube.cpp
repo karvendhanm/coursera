@@ -1,25 +1,17 @@
 #include "Cube.h"
+#include "HSLAPixel.h"
 #include <iostream>
 
 namespace uiuc {
-	Cube::Cube() {
-		length_ = 1;
-	}
 
-	Cube::Cube(double length) {
+	Cube::Cube(double length, HSLAPixel color) {
 		length_ = length;
+		color_ = color;
+		std::cout << "created $" << this->getVolume() << " non-default constructor" << std::endl;
 	}
 
-	Cube::Cube(const Cube & obj) {
-		length_ = obj.length_;
-	}
-
-	Cube & Cube::operator=(const Cube & obj) {
-		length_ = obj.length_;
-		return *this;
-	}
-
-	Cube::~Cube() {
+	double Cube::getLength() const {
+		return length_;
 	}
 
 	double Cube::getVolume() const {
