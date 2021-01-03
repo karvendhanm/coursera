@@ -10,7 +10,7 @@ using std::endl;
 
 int main() {
 	Cube blue(5, HSLAPixel::BLUE);
-	Cube orange(10 HSLAPixel::ORANGE);
+	Cube orange(10, HSLAPixel::ORANGE);
 	Cube yellow(15, HSLAPixel::YELLOW);
 	Cube purple(20, HSLAPixel::PURPLE);
 
