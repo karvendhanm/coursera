@@ -19,6 +19,10 @@ int main() {
 	s.push_back(orange);
 	s.push_back(yellow);
 	s.push_back(purple);
+	s.push_back(blue);
 
+	cout << s << endl;
+
+	
 	return 0;
 }
