@@ -1,5 +1,5 @@
 EXE = main
-OBJS = pixel_calling.o HSLAPixel.o Cube.o
+OBJS = cube_calling.o Cube.o HSLAPixel.o
 CLEAN_RM =
 
 include ../../../_make/generic.mk
