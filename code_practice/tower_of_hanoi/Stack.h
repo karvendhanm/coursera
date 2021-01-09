@@ -5,6 +5,8 @@ using uiuc::Cube;
 
 class Stack {
   public:
+	void push_back(const Cube & cube);
+	
   private:
-    std::vector<Cube> cubes_;
+    	std::vector<Cube> cubes_;
 };
