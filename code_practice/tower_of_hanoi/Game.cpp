@@ -31,10 +31,16 @@ stacks_[0].push_back(yellow);
 
 
 void Game::solve() {
-	std::cout << "this is really really weird" << std::endl;
+	std::cout << *this <<std::endl;
 }
 
-
+std::ostream & operator<<(std::ostream & os, const Game & game) {
+	for(unsigned i = 0; i < game.stacks_.size(); i++) {
+		os << "Stack[" << i << "]" << game.stacks_[i];
+	}
+os << std::endl;
+return os;
+}
 
 
 
