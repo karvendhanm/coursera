@@ -19,10 +19,12 @@ unsigned Stack::size() const {
 	return cubes_.size();
 }
 
-void Stack::print_memory_address() const {
+std::vector<double> Stack::getAllCubeLengths() const {
+	std::vector<double> allCubeLengths_;
 	for(unsigned i=0; i < this->size(); i++) {
-		std::cout << "At index: " << i << " the memory address is: " << &cubes_[i] << std::endl;
+		allCubeLengths_.push_back(cubes_[i].getLength());
 	}
+	return allCubeLengths_;
 }
 
 Cube Stack::remove_top() {

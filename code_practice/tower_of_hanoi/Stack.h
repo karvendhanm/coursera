@@ -9,7 +9,7 @@ class Stack {
   public:
 	void push_back(const Cube & cube);
 	unsigned size() const;
-	void print_memory_address() const;
+	std::vector<double> getAllCubeLengths() const;
 	Cube remove_top();
 	Cube & peek_top();
 

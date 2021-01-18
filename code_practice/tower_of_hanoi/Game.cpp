@@ -27,7 +27,6 @@ stacks_[0].push_back(yellow);
 
 }
 
-
 void Game::solve() {
 	std::cout << *this <<std::endl;
 }
