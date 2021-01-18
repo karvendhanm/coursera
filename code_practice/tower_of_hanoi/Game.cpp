@@ -1,7 +1,5 @@
 #include "Game.h"
 #include "Stack.h"
-#include "uiuc/Cube.h"
-#include "uiuc/HSLAPixel.h"
 
 #include <iostream>
 

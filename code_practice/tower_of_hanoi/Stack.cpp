@@ -3,7 +3,6 @@
 #include <exception>
 
 void Stack::push_back(const Cube & cube) {
-	std::cout << "the memory address of Cube object cube inside Stack.cpp push_back is: " << &cube << std::endl;
 
 	if(size() > 0 && cube.getLength() > peek_top().getLength())	{
 		std::cerr << "A Larger cube cannot be placed on top of a smaller cube." << std::endl;
@@ -28,7 +27,6 @@ void Stack::print_memory_address() const {
 
 Cube Stack::remove_top() {
 	Cube cube = this->peek_top();
-	std::cout << "The address of the cube inside Stack.cpp remove_top is: " << &cube << std::endl;
 	cubes_.pop_back();
 	return cube;		
 }
