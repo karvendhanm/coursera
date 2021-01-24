@@ -3,6 +3,8 @@
 #include <vector>
 #include "Stack.h"
 
+void bestChoices(std::vector<double> & cubeLengths_, std::vector<double> & choiceVector, double & cubeLength);
+
 class Game {
 	public:
 		Game();

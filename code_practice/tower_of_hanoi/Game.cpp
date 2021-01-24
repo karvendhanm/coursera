@@ -8,6 +8,25 @@
 using uiuc::HSLAPixel;
 using uiuc::Cube;
 
+void bestChoices(std::vector<double> & cubeLengths_, std::vector<double> & choiceVector, double & cubeLength) {	
+	int index = -1;
+	unsigned nCubes = cubeLengths_.size();
+	for (unsigned i=0; i<nCubes; i++) {
+		if ((cubeLengths_[i] > cubeLength) && (index != -1)) {
+			if ((i - index)%2) {
+				choiceVector.push_back(cubeLengths_[i]);
+				if ( i >= (nCubes-2)) {
+					choiceVector.push_back(0);
+				}
+			}
+		}
+		else if(cubeLengths_[i] == cubeLength) {
+			index = i;	
+		}
+	}
+}
+
+
 void mergeTwoVectors(std::vector<double> & vec1, std::vector<double> & vec2) {
 	for(unsigned i = 0; i < vec2.size(); i++) {
 		vec1.push_back(vec2[i]);
@@ -56,12 +75,10 @@ stacks_[0].push_back(yellow);
 }
 
 void Game::solve() {
-	std::cout << *this <<std::endl;
 	std::vector<double> allCubes;
 	getAvailableCubeLengths(stacks_, allCubes);
-	for(unsigned i=0; i<allCubes.size(); i++) {
-		std::cout << "the variable is: " << allCubes[i] << std::endl;
-	}
+
+	std::cout << *this <<std::endl;
 	
 }
 
