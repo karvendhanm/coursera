@@ -4,6 +4,7 @@
 #include <iostream>
 #include <exception>
 #include <bits/stdc++.h>
+#include <algorithm>
 
 using uiuc::HSLAPixel;
 using uiuc::Cube;
@@ -55,6 +56,7 @@ void getAvailableCubeLengths(std::vector<Stack> & stacks, std::vector<double> & 
 		sort(cubeLengths_.begin(), cubeLengths_.end());
 }
 
+
 void Game::makeFirstMove() {
 	Cube cube = stacks_[0].remove_top();
 	stacks_[1].push_back(cube);
@@ -82,6 +84,16 @@ stacks_[0].push_back(yellow);
 
 }
 
+int Game::getSourceStack() {
+    std::vector<int> stackNumbers{0, 1, 2};
+    stackNumbers.erase(std::remove(stackNumbers.begin(), stackNumbers.end(), lastMoveDestination_), stackNumbers.end());
+
+}
+
+void Game::move() {
+	int sourceStack = getSourceStack();
+}
+
 void Game::solve() {
 	std::cout << *this <<std::endl;
 
@@ -92,6 +104,7 @@ void Game::solve() {
 	std::cout << *this <<std::endl;
 
 	while (!((stacks_[0].size() == 0) && (stacks_[1].size() == 0)) || !((stacks_[0].size() == 0) && (stacks_[2].size() == 0))) {
+		move();
 		std::cout << *this <<std::endl;
 	}
 

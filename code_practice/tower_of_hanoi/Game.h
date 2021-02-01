@@ -5,11 +5,14 @@
 
 void bestChoices(std::vector<double> & cubeLengths_, std::vector<double> & choiceVector, double & cubeLength);
 
+
 class Game {
 	public:
 		Game();
 		void solve();
-        	void makeFirstMove();
+        void makeFirstMove();
+		void move();
+        int getSourceStack();
 
 
 		friend std::ostream & operator<<(std::ostream & os, const Game & game);
