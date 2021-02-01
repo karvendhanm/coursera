@@ -36,6 +36,8 @@ void mergeTwoVectors(std::vector<double> & vec1, std::vector<double> & vec2) {
 void getAvailableCubeLengths(std::vector<Stack> & stacks, std::vector<double> & cubeLengths_) {
 	unsigned nStacks = stacks.size();
 	if(nStacks != 3) {
+		std::cerr << "Tower of hanoi must have three stacks" << std::endl;		
+
 		throw std::runtime_error("Tower of hanoi must have three stacks");
 	}	
 	
@@ -51,6 +53,13 @@ void getAvailableCubeLengths(std::vector<Stack> & stacks, std::vector<double> & 
 		}
 
 		sort(cubeLengths_.begin(), cubeLengths_.end());
+}
+
+void makeFirstMove(std::vector<Stack> & stacks) {
+
+	Cube cube = stacks[0].remove_top();
+	stacks[1].push_back(cube);
+
 }
 
 Game::Game() {
@@ -75,8 +84,11 @@ stacks_[0].push_back(yellow);
 }
 
 void Game::solve() {
+	std::cout << *this <<std::endl;
+
 	std::vector<double> allCubes;
 	getAvailableCubeLengths(stacks_, allCubes);
+	makeFirstMove(stacks_);
 
 	std::cout << *this <<std::endl;
 	

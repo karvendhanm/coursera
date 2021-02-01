@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "uiuc/Cube.h" 
+#include "uiuc/Cube.h"
 #include <ostream>
 
 using uiuc::Cube;
@@ -14,7 +14,7 @@ class Stack {
 	Cube & peek_top();
 
 	friend std::ostream & operator<<(std::ostream & os, const Stack & stack);
-	
+
   private:
     	std::vector<Cube> cubes_;
 };
