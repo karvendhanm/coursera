@@ -9,10 +9,12 @@ class Game {
 	public:
 		Game();
 		void solve();
+        	void makeFirstMove();
 
 
-		friend std::ostream & operator<<(std::ostream & os, const Game & game);	
-	
+		friend std::ostream & operator<<(std::ostream & os, const Game & game);
+
 	private:
-		std::vector<Stack> stacks_;		
+		std::vector<Stack> stacks_;
+		int lastMoveDestination_;
 };

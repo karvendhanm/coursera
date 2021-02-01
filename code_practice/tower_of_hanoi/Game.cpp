@@ -8,7 +8,7 @@
 using uiuc::HSLAPixel;
 using uiuc::Cube;
 
-void bestChoices(std::vector<double> & cubeLengths_, std::vector<double> & choiceVector, double & cubeLength) {	
+void bestChoices(std::vector<double> & cubeLengths_, std::vector<double> & choiceVector, double & cubeLength) {
 	int index = -1;
 	unsigned nCubes = cubeLengths_.size();
 	for (unsigned i=0; i<nCubes; i++) {
@@ -21,7 +21,7 @@ void bestChoices(std::vector<double> & cubeLengths_, std::vector<double> & choic
 			}
 		}
 		else if(cubeLengths_[i] == cubeLength) {
-			index = i;	
+			index = i;
 		}
 	}
 }
@@ -31,16 +31,16 @@ void mergeTwoVectors(std::vector<double> & vec1, std::vector<double> & vec2) {
 	for(unsigned i = 0; i < vec2.size(); i++) {
 		vec1.push_back(vec2[i]);
 	}
-} 
+}
 
 void getAvailableCubeLengths(std::vector<Stack> & stacks, std::vector<double> & cubeLengths_) {
 	unsigned nStacks = stacks.size();
 	if(nStacks != 3) {
-		std::cerr << "Tower of hanoi must have three stacks" << std::endl;		
+		std::cerr << "Tower of hanoi must have three stacks" << std::endl;
 
 		throw std::runtime_error("Tower of hanoi must have three stacks");
-	}	
-	
+	}
+
 		std::vector<double> lenCubesStack1 = stacks[0].getAllCubeLengths();
 		std::vector<double> lenCubesStack2 = stacks[1].getAllCubeLengths();
 		std::vector<double> lenCubesStack3 = stacks[2].getAllCubeLengths();
@@ -55,11 +55,10 @@ void getAvailableCubeLengths(std::vector<Stack> & stacks, std::vector<double> & 
 		sort(cubeLengths_.begin(), cubeLengths_.end());
 }
 
-void makeFirstMove(std::vector<Stack> & stacks) {
-
-	Cube cube = stacks[0].remove_top();
-	stacks[1].push_back(cube);
-
+void Game::makeFirstMove() {
+	Cube cube = stacks_[0].remove_top();
+	stacks_[1].push_back(cube);
+	lastMoveDestination_ = 1;
 }
 
 Game::Game() {
@@ -88,10 +87,14 @@ void Game::solve() {
 
 	std::vector<double> allCubes;
 	getAvailableCubeLengths(stacks_, allCubes);
-	makeFirstMove(stacks_);
+	makeFirstMove();
 
 	std::cout << *this <<std::endl;
-	
+
+	while (!((stacks_[0].size() == 0) && (stacks_[1].size() == 0)) || !((stacks_[0].size() == 0) && (stacks_[2].size() == 0))) {
+		std::cout << *this <<std::endl;
+	}
+
 }
 
 std::ostream & operator<<(std::ostream & os, const Game & game) {
@@ -101,7 +104,3 @@ std::ostream & operator<<(std::ostream & os, const Game & game) {
 os << std::endl;
 return os;
 }
-
-
-
-
