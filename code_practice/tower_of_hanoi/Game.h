@@ -13,6 +13,7 @@ class Game {
         void makeFirstMove();
 		void move();
         int getSourceStack();
+        int getOptimalSourceStack(std::vector<int> & stackNumbers);
 
 
 		friend std::ostream & operator<<(std::ostream & os, const Game & game);

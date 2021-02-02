@@ -81,13 +81,35 @@ stacks_[0].push_back(purple);
 Cube yellow(1, HSLAPixel::YELLOW);
 stacks_[0].push_back(yellow);
 
+}
 
+int Game::getOptimalSourceStack(std::vector<int> & stackNumbersNLD) {
+    for(unsigned i=0; i<stackNumbersNLD.size(); i++)    {
+
+        if (stacks_[stackNumbersNLD[i]].size()) {
+            Cube cube = stacks_[stackNumbersNLD[i]].peek_top();
+            double cubeLength = cube.getLength();
+            std::vector<double> allCubeLenghts, bestChoices_;
+            getAvailableCubeLengths(stacks_, allCubeLenghts);
+            bestChoices(allCubeLenghts, bestChoices_, cubeLength);
+
+            std::vector<int> stackNumbersPD_{0, 1, 2};
+            stackNumbersPD_.erase(std::remove(stackNumbersPD_.begin(), stackNumbersPD_.end(), stackNumbersNLD[i]), stackNumbersPD_.end());
+
+            if (stacks_[stackNumbersPD_[0]].size()) {
+                Cube cube = stacks_[stackNumbersPD_[0]].peek_top();
+            }
+            else if (stacks_[stackNumbersPD_[1]].size()) {
+                Cube cube = stacks_[stackNumbersPD_[0]].peek_top();
+            }
+        }
+    }
 }
 
 int Game::getSourceStack() {
-    std::vector<int> stackNumbers{0, 1, 2};
-    stackNumbers.erase(std::remove(stackNumbers.begin(), stackNumbers.end(), lastMoveDestination_), stackNumbers.end());
-
+    std::vector<int> stackNumbersNotLastDestination{0, 1, 2};
+    stackNumbersNotLastDestination.erase(std::remove(stackNumbersNotLastDestination.begin(), stackNumbersNotLastDestination.end(), lastMoveDestination_), stackNumbersNotLastDestination.end());
+    int stackNumberSource = getOptimalSourceStack(stackNumbersNotLastDestination);
 }
 
 void Game::move() {
