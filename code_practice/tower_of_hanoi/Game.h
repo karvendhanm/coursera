@@ -9,12 +9,12 @@ void bestChoices(std::vector<double> & cubeLengths_, std::vector<double> & choic
 class Game {
 	public:
 		Game();
-		void solve();
-        void makeFirstMove();
-		void move();
-        int getSourceStack();
-        int getOptimalSourceStack(std::vector<int> & stackNumbers);
-
+		// void solve();
+        // void makeFirstMove();
+		// void move();
+        //int getSourceStack();
+        //int getOptimalSourceStack(std::vector<int> & stackNumbersNLD);
+        //int getFinalDestination(std::vector<int> & stackNumbersPD_, int & cubeLength, std::vector<double> bestchoices_);
 
 		friend std::ostream & operator<<(std::ostream & os, const Game & game);
 

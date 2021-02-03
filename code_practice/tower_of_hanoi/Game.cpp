@@ -10,6 +10,10 @@ using uiuc::HSLAPixel;
 using uiuc::Cube;
 
 void bestChoices(std::vector<double> & cubeLengths_, std::vector<double> & choiceVector, double & cubeLength) {
+
+    /**/
+    sort(cubeLengths_.begin(), cubeLengths_.end());
+
 	int index = -1;
 	unsigned nCubes = cubeLengths_.size();
 	for (unsigned i=0; i<nCubes; i++) {
@@ -22,7 +26,10 @@ void bestChoices(std::vector<double> & cubeLengths_, std::vector<double> & choic
 			}
 		}
 		else if(cubeLengths_[i] == cubeLength) {
-			index = i;
+            index = i;
+            if(index == int(nCubes-1)) {
+                choiceVector.push_back(0);
+            }
 		}
 	}
 }
@@ -57,12 +64,6 @@ void getAvailableCubeLengths(std::vector<Stack> & stacks, std::vector<double> & 
 }
 
 
-void Game::makeFirstMove() {
-	Cube cube = stacks_[0].remove_top();
-	stacks_[1].push_back(cube);
-	lastMoveDestination_ = 1;
-}
-
 Game::Game() {
 	for(int i = 0; i < 3; i++) {
 		Stack stackofCubes_;
@@ -83,54 +84,66 @@ stacks_[0].push_back(yellow);
 
 }
 
-int Game::getOptimalSourceStack(std::vector<int> & stackNumbersNLD) {
-    for(unsigned i=0; i<stackNumbersNLD.size(); i++)    {
-
-        if (stacks_[stackNumbersNLD[i]].size()) {
-            Cube cube = stacks_[stackNumbersNLD[i]].peek_top();
-            double cubeLength = cube.getLength();
-            std::vector<double> allCubeLenghts, bestChoices_;
-            getAvailableCubeLengths(stacks_, allCubeLenghts);
-            bestChoices(allCubeLenghts, bestChoices_, cubeLength);
-
-            std::vector<int> stackNumbersPD_{0, 1, 2};
-            stackNumbersPD_.erase(std::remove(stackNumbersPD_.begin(), stackNumbersPD_.end(), stackNumbersNLD[i]), stackNumbersPD_.end());
-
-            if (stacks_[stackNumbersPD_[0]].size()) {
-                Cube cube = stacks_[stackNumbersPD_[0]].peek_top();
-            }
-            else if (stacks_[stackNumbersPD_[1]].size()) {
-                Cube cube = stacks_[stackNumbersPD_[0]].peek_top();
-            }
-        }
-    }
-}
-
-int Game::getSourceStack() {
-    std::vector<int> stackNumbersNotLastDestination{0, 1, 2};
-    stackNumbersNotLastDestination.erase(std::remove(stackNumbersNotLastDestination.begin(), stackNumbersNotLastDestination.end(), lastMoveDestination_), stackNumbersNotLastDestination.end());
-    int stackNumberSource = getOptimalSourceStack(stackNumbersNotLastDestination);
-}
-
-void Game::move() {
-	int sourceStack = getSourceStack();
-}
-
-void Game::solve() {
-	std::cout << *this <<std::endl;
-
-	std::vector<double> allCubes;
-	getAvailableCubeLengths(stacks_, allCubes);
-	makeFirstMove();
-
-	std::cout << *this <<std::endl;
-
-	while (!((stacks_[0].size() == 0) && (stacks_[1].size() == 0)) || !((stacks_[0].size() == 0) && (stacks_[2].size() == 0))) {
-		move();
-		std::cout << *this <<std::endl;
-	}
-
-}
+// void Game::makeFirstMove() {
+// 	Cube cube = stacks_[0].remove_top();
+// 	stacks_[1].push_back(cube);
+// 	lastMoveDestination_ = 1;
+// }
+//
+// int Game::getFinalDestination(std::vector<int> & stackNumbersPD_, int & cubeLength, std::vector<double> & bestChoices_) {
+//
+//     int finalDestination_ = -1;
+//
+//     for (unsigned i=0; i<bestChoices_.size())
+//
+//
+//     return finalDestination_;
+// }
+//
+// int Game::getOptimalSourceStack(std::vector<int> & stackNumbersPSStack) {
+//     for(unsigned i=0; i<stackNumbersPSStack.size(); i++)    {
+//
+//         if (stacks_[stackNumbersPSStack[i]].size()) {
+//             Cube cube = stacks_[stackNumbersPSStack[i]].peek_top();
+//             double cubeLength = cube.getLength();
+//             std::vector<double> allCubeLenghts, bestChoices_;
+//             getAvailableCubeLengths(stacks_, allCubeLenghts);
+//             bestChoices(allCubeLenghts, bestChoices_, cubeLength);
+//
+//             std::vector<int> stackNumbersPD_{0, 1, 2};
+//             stackNumbersPD_.erase(std::remove(stackNumbersPD_.begin(), stackNumbersPD_.end(), stackNumbersPSStack[i]), stackNumbersPD_.end());
+//
+//             int finalDestination_ = getFinalDestination(stackNumbersPD_, cubeLength, bestChoices_);
+//
+//         }
+//     }
+// }
+//
+// int Game::getSourceStack() {
+//     std::vector<int> stackNumbersPSStack{0, 1, 2};
+//     stackNumbersPSStack.erase(std::remove(stackNumbersPSStack.begin(), stackNumbersPSStack.end(), lastMoveDestination_), stackNumbersPSStack.end());
+//     int stackNumberSource = getOptimalSourceStack(stackNumbersPSStack);
+// }
+//
+// void Game::move() {
+// 	int sourceStack = getSourceStack();
+// }
+//
+// void Game::solve() {
+// 	std::cout << *this <<std::endl;
+//
+// 	std::vector<double> allCubes;
+// 	getAvailableCubeLengths(stacks_, allCubes);
+// 	makeFirstMove();
+//
+// 	std::cout << *this <<std::endl;
+//
+// 	while (!((stacks_[0].size() == 0) && (stacks_[1].size() == 0)) || !((stacks_[0].size() == 0) && (stacks_[2].size() == 0))) {
+// 		move();
+// 		std::cout << *this <<std::endl;
+// 	}
+//
+// }
 
 std::ostream & operator<<(std::ostream & os, const Game & game) {
 	for(unsigned i = 0; i < game.stacks_.size(); i++) {

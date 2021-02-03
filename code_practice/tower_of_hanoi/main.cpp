@@ -12,8 +12,15 @@ int main() {
 //	Game game;
 //	game.solve();
 
-    Stack stack;
-    cout << stack.size() << endl;
+    std::vector<double> cubeLengths_{34, 11, 9, 31};
+    std::vector<double> choiceVector;
+    double cubeLength = 34;
+
+    bestChoices(cubeLengths_, choiceVector, cubeLength);
+
+    for(unsigned i=0; i<choiceVector.size(); i++){
+        cout << choiceVector[i] << endl;
+    }
 
 	return 0;
 }
